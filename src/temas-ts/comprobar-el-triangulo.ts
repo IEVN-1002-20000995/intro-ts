@@ -1,29 +1,32 @@
-// comprobar-el-triangulo.ts
-import { Punto } from './distancia-entre-2-puntos'; // Importar la clase Punto
+import {Punto} from './distancia-entre-2-puntos'; 
 
-// Crear una clase que maneja la verificación del triángulo
+
 class Triangulo {
-  punto1: Punto;
-  punto2: Punto;
-  punto3: Punto;
+  A: Punto; //variable:objeto de origuen?
+  B: Punto;
+  C: Punto;
 
   constructor(punto1: Punto, punto2: Punto, punto3: Punto) {
-    this.punto1 = punto1;
-    this.punto2 = punto2;
-    this.punto3 = punto3;
+    this.A = punto1;
+    this.B = punto2;
+    this.C = punto3;
   }
 
-  // Método para verificar si los tres puntos forman un triángulo
-  esTriangulo(): boolean {
-    const distancia12 = this.punto1.calcularDistancia(this.punto2);
-    const distancia23 = this.punto2.calcularDistancia(this.punto3);
-    const distancia31 = this.punto3.calcularDistancia(this.punto1);
+  Triangulo(): boolean {
+    const distanciaAB = new Punto(this.puntoA.x1, this.puntoA.y1, this.puntoB.x1, this.puntoB.y1).calcularDistancia();
+    const distanciaBC = new Punto(this.puntoB.x1, this.puntoB.y1, this.puntoC.x1, this.puntoC.y1).calcularDistancia();
+    const distanciaCA = new Punto(this.puntoC.x1, this.puntoC.y1, this.puntoA.x1, this.puntoA.y1).calcularDistancia();
+
+    console.log(`Distancia entre Punto A y Punto B: ${distanciaAB}`);
+    console.log(`Distancia entre Punto B y Punto C: ${distanciaBC}`);
+    console.log(`Distancia entre Punto C y Punto A: ${distanciaCA}`);
+
 
     // Verificar la propiedad triangular
     if (
-      distancia12 + distancia23 > distancia31 &&
-      distancia23 + distancia31 > distancia12 &&
-      distancia31 + distancia12 > distancia23
+      distanciaAB + distanciaBC > distanciaCA &&
+      distanciaBC + distanciaCA > distanciaAB &&
+      distanciaCA + distanciaAB > distanciaBC
     ) {
       return true; // Es un triángulo
     } else {
@@ -32,16 +35,15 @@ class Triangulo {
   }
 }
 
-// Crear tres puntos
-const punto1 = new Punto(1, 2);
-const punto2 = new Punto(4, 6);
-const punto3 = new Punto(7, 2);
+//Coordenadas de puntos
+const punto1 = new Punto(1,2,4,6);
+const punto2 = new Punto(4,6,7,2);
+const punto3 = new Punto(7,2,1,2);
 
-// Crear una instancia de Triangulo
+
 const triangulo = new Triangulo(punto1, punto2, punto3);
 
-// Verificar si los puntos forman un triángulo
-if (triangulo.esTriangulo()) {
+if (triangulo.Triangulo()) {
   console.log('Los puntos forman un triángulo.');
 } else {
   console.log('Los puntos no forman un triángulo.');

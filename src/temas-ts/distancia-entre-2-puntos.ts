@@ -1,25 +1,24 @@
-// distancia-entre-2-puntos.ts
 export class Punto {
-    constructor(public x: number, public y: number) {
-      this.x = x;
-      this.y = y;
+     x1:number;
+     y1:number;
+     x2:number;
+     y2:number;
+    constructor(x1:number,y1:number,x2:number,y2:number) {
+      
+      this.x1 = x1;
+      this.y1 = y1;
+      this.x2 = x2;
+      this.y2 = y2;
     }
   
-    // Método de instancia para calcular la distancia a otro punto
-    calcularDistancia(punto: Punto): number {
-      const distancia = Math.sqrt(
-        (punto.x - this.x) ** 2 + (punto.y - this.y) ** 2
-      );
+    calcularDistancia():number {
+      const distancia = Math.sqrt((this.x2 - this.x1) ** 2 + (this.y2 - this.y1) ** 2);
       return distancia;
     }
   }
   
-  // Crear dos puntos
-  const punto1 = new Punto(1, 2);
-  const punto2 = new Punto(4, 6);
-  
-  // Calcular la distancia
-  const distancia = punto1.calcularDistancia(punto2);
-  
+  // Dos puntos
+  const punto = new Punto(-4, 3,2,5);
+  const distancia = punto.calcularDistancia();  
   console.log(`La distancia entre los dos puntos es: ${distancia}`);
   
